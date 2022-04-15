@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bate Papo Uol</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+  </head>
+  <body>
+    <!-- Tela login -->
+    <div class="tela-entrada">
+        <div class="login">
+            <img src="https://i.ibb.co/pXSHMQL/logo-2.png">
+            <input class="nome-usuario" type="text" placeholder="Digite seu nome">
+            <button onclick="validarLogin(this)">Entrar</button>
+        </div>
+    </div>
+
+    <!-- Tela  chat -->
+    <div class="tela-chat escondido">
+        <div class="topo">
+            <img src="https://i.ibb.co/pXSHMQL/logo-2.png">
+            <ion-icon name="people" onclick="alternarAbaParticipantes(this)"></ion-icon>
+        </div>
+        <div class="chat-display">
+                <div class="nova mensagem"></div>
+        </div>
+
+        <div class="rodape">
+            <div class="barra-chat">
+                <input class="minha-mensagem" type="text" placeholder="Escreva aqui...">
+                <span class="digitando"><p>teste teste teste</p></span>
+            </div>
+            <ion-icon onclick="enviarMensagem(this)" name="paper-plane-outline"></ion-icon>
+        </div>
+    </div>
+
+    <!-- Tela participantes -->
+    <div class="tela-participantes escondido">
+        <div class="background-participantes">
+            <div class="coluna-participantes">
+                <div class="contatos">
+                    <h6>Escolha um contato para enviar mensagem:</h6>
+                    <section class="quem">
+                        <div onclick="selecionarDestinatario(this)" class="box-contato selecionado">
+                            <ion-icon name="people"></ion-icon>
+                            <p class="destinatario">Todos</p>
+                            <div class="check">
+                                <ion-icon name="checkmark"></ion-icon>
+                            </div>
+                        </div>
+                        <ul class="lista-contatos"></ul>
+                    </section>
+                    <h6>Escolha a visibilidade:</h6>
+                    <section class="privacidade">
+                        <div onclick="selecionarTipo(this)" class="box-tipo selecionado">
+                            <ion-icon name="lock-open"></ion-icon>
+                            <p class="tipo">Público</p>
+                            <div class="check">
+                                <ion-icon name="checkmark"></ion-icon>
+                            </div>
+                        </div>
+                        <div onclick="selecionarTipo(this)" class="box-tipo">
+                            <ion-icon name="lock-closed"></ion-icon>
+                            <p class="tipo">Reservadamente</p>
+                            <div class="check">
+                                <ion-icon name="checkmark"></ion-icon>
+                            </div>
+                        </div>
+                    </section>
+                    <button onclick="alternarAbaParticipantes(this)">Fechar</button>
+                </div>          
+            </div>      
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="scripts.js"></script>
+  </body>
+</html>
