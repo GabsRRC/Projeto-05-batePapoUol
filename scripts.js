@@ -7,12 +7,12 @@ function validarLogin(){
         promise.then(entrarBatepapo);
         promise.catch(mostrarErroLogin);
     } else {
-        alert('inválido, nome curto, no mínimo quatro letras');
+        alert('O nome escolhido deve ter no mínimo quatro letras \n Escolha nome outro e tente novamente');
     }
 }
     // mostrar error
 function mostrarErroLogin(){
-    alert('deu ruim');
+    alert('Este nome já está em uso!\n Escolha outro nome e tente novamente');
 }
     // entrar na sala de bate bapo
 function entrarBatepapo(){
@@ -25,8 +25,9 @@ function entrarBatepapo(){
 
 function refreshAPI(){
     setInterval(enviarStatus, 5000);
-    setInterval(atualizarMensagens, 5000);
+    setInterval(atualizarMensagens, 3000);
     setInterval(atualizarParticipantes, 10000);
+    setInterval(barraFinalzinho, 200);
 }
 
 //CHAT
@@ -46,7 +47,8 @@ function mandarConectado(){
 }
 
 function mandarDesconectado(){
-    alert('erro')
+    alert('Erro!\n Não foi possível manter a conexão! Entre novamente')
+    usuarioOff();
 }
 
     //abrir ou fechar aba de participantes
@@ -81,6 +83,8 @@ function montarParticipantes(name){
 
 function deletarListaAntiga(){
     document.querySelector('.lista-contatos').innerHTML = ''
+    const resetDest = document.querySelector('.inicial');
+    resetDest.classList.add('selecionado');
 }
 
 
@@ -95,6 +99,8 @@ function selecionarTipo(tipo){
     tipo.classList.toggle("selecionado")
 }
 
+
+
 function selecionarDestinatario(destinatario){
     const destinatarioSelecionado = document
     .querySelector(".quem")
@@ -104,11 +110,23 @@ function selecionarDestinatario(destinatario){
         destinatarioSelecionado.classList.remove("selecionado")
     }  
     destinatario.classList.toggle("selecionado")
+    barraFinalzinho(destinatarioSelecionado);
 }
 
 
+function barraFinalzinho (){
+    const destinatarioSelecionado = document.querySelector(".selecionado .destinatario").innerHTML;
+    const visibilidade = document.querySelector(".box-tipo.selecionado .tipo").innerHTML
+    if (visibilidade === 'Reservadamente'){
+        document.querySelector(".digitando").innerHTML = `Digitando para ${destinatarioSelecionado} (reservadamente)`
+    } else{
+        document.querySelector(".digitando").innerHTML = `Digitando para ${destinatarioSelecionado}` 
+    }
+}
+
 
     //enviar mensagem
+
 function enviarMensagem() {
     const text = document.querySelector(".minha-mensagem").value;
     const login = document.querySelector(".nome-usuario").value;
@@ -123,8 +141,8 @@ function enviarMensagem() {
             type: 'private_message',
         };
         const promise = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', minhaMensagem);
-        promise.then(enviarMensagem2);
-        promise.catch(enviarMensagem3);
+        promise.then(enviarMensagemThen);
+        promise.catch(enviarMensagemCatch);
     } else {
         const minhaMensagem = {
             from: login,
@@ -134,18 +152,21 @@ function enviarMensagem() {
         };
           
         const promise = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', minhaMensagem);
-        promise.then(enviarMensagem2);
-        promise.catch(enviarMensagem3); 
+        promise.then(enviarMensagemThen);
+        promise.catch(enviarMensagemCatch); 
     }
+    
 }
 
-function enviarMensagem2(){
-    document.querySelector('.minha-mensagem').innerHTML = ''
-    alert("enviada mensagem");
+function enviarMensagemThen(){
+    document.querySelector('.minha-mensagem').value = ''
+    atualizarMensagens();
 }
 
-function enviarMensagem3(){
+function enviarMensagemCatch(){
     alert("xiii");
+    usuarioOff();
+    //função de reload
 }
 
     //receber mensagem
@@ -167,7 +188,7 @@ function deletarMensagensAntigas() {
 }
 
 function montarMensagens(from, to, text, type, time) {
-    const mensagem = document.querySelector('.chat-display')
+    const mensagem = document.querySelector('.chat-display');
     const login = document.querySelector(".nome-usuario").value;    
     if (type === 'status') {
         mensagem.innerHTML += `
@@ -200,5 +221,16 @@ function montarMensagens(from, to, text, type, time) {
             ${text}</p></span>
         </div>`
     }
+    scrollAutomatico();
 }
 
+function scrollAutomatico() {
+    const todasMensagens = document.querySelectorAll(".chat-display div")
+    const ultimaMensagem = todasMensagens[todasMensagens.length - 1];
+    ultimaMensagem.scrollIntoView();
+  }
+
+function usuarioOff() {
+    window.location.reload();
+}
+  

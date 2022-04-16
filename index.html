@@ -28,14 +28,13 @@
             <img src="https://i.ibb.co/pXSHMQL/logo-2.png">
             <ion-icon name="people" onclick="alternarAbaParticipantes(this)"></ion-icon>
         </div>
-        <div class="chat-display">
-                <div class="nova mensagem"></div>
-        </div>
+        
+        <div class="chat-display"></div>
 
         <div class="rodape">
             <div class="barra-chat">
                 <input class="minha-mensagem" type="text" placeholder="Escreva aqui...">
-                <span class="digitando"><p>teste teste teste</p></span>
+                <p class="digitando"></p>
             </div>
             <ion-icon onclick="enviarMensagem(this)" name="paper-plane-outline"></ion-icon>
         </div>
@@ -48,7 +47,7 @@
                 <div class="contatos">
                     <h6>Escolha um contato para enviar mensagem:</h6>
                     <section class="quem">
-                        <div onclick="selecionarDestinatario(this)" class="box-contato selecionado">
+                        <div onclick="selecionarDestinatario(this)" class="box-contato selecionado inicial">
                             <ion-icon name="people"></ion-icon>
                             <p class="destinatario">Todos</p>
                             <div class="check">

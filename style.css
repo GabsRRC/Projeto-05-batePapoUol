@@ -7,6 +7,10 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
+*{
+    box-sizing: border-box;
+}
+
 /* topo */
 .topo {
     width: 100%;
@@ -35,8 +39,11 @@ body{
 .chat-display{
     display:flex;
     flex-direction: column;
-    margin-top: 100px;
-    margin-bottom: 90px;
+    height: 0 auto;
+    width: 100%;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    overflow-x: hidden;
 }
 
 .mensagem {
@@ -137,6 +144,12 @@ input {
     flex-direction: column;
     font-family: "Roboto", sans-serif;
     align-items: flex-end;
+}
+
+.lista-contatos{
+    max-height:250px;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .coluna-participantes h6{
