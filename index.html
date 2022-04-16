@@ -33,10 +33,10 @@
 
         <div class="rodape">
             <div class="barra-chat">
-                <input class="minha-mensagem" type="text" placeholder="Escreva aqui...">
+                <input id="myInput" class="minha-mensagem" type="text" placeholder="Escreva aqui...">
                 <p class="digitando"></p>
             </div>
-            <ion-icon onclick="enviarMensagem(this)" name="paper-plane-outline"></ion-icon>
+            <ion-icon id="myBtn" onclick="enviarMensagem(this)" name="paper-plane-outline"></ion-icon>
         </div>
     </div>
 
@@ -73,7 +73,8 @@
                             </div>
                         </div>
                     </section>
-                    <button onclick="alternarAbaParticipantes(this)">Fechar</button>
+                    <button class="voltar" onclick="alternarAbaParticipantes(this)">Voltar</button>
+                    <button class="log-out" onclick="usuarioOff(this)">LogOut</button>
                 </div>          
             </div>      
         </div>

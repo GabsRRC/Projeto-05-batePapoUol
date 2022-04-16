@@ -24,6 +24,9 @@ function entrarBatepapo(){
 }
 
 function refreshAPI(){
+    atualizarMensagens();
+    atualizarParticipantes();
+    
     setInterval(enviarStatus, 5000);
     setInterval(atualizarMensagens, 3000);
     setInterval(atualizarParticipantes, 10000);
@@ -159,6 +162,7 @@ function enviarMensagem() {
 }
 
 function enviarMensagemThen(){
+    
     document.querySelector('.minha-mensagem').value = ''
     atualizarMensagens();
 }
@@ -233,4 +237,11 @@ function scrollAutomatico() {
 function usuarioOff() {
     window.location.reload();
 }
-  
+
+let inpu = document.getElementById("myInput");
+inpu.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("myBtn").click();
+  }
+});
