@@ -1,5 +1,16 @@
 //LOGIN
     //conferir número de caracteres e disponibilidade do login
+function loading(){
+    const carregando = document.querySelector(".escondido")
+    carregando.classList.remove('escondido')
+    const botao = document.querySelector(".botao")
+    botao.classList.add('escondido')
+    const barra = document.querySelector(".nome-usuario")
+    barra.classList.add('escondido')
+    setTimeout(validarLogin, 3000);
+}
+
+
 function validarLogin(){
     const login = document.querySelector(".nome-usuario").value;
     if (login.length >= 4){
@@ -26,7 +37,7 @@ function entrarBatepapo(){
 function refreshAPI(){
     atualizarMensagens();
     atualizarParticipantes();
-    
+
     setInterval(enviarStatus, 5000);
     setInterval(atualizarMensagens, 3000);
     setInterval(atualizarParticipantes, 10000);

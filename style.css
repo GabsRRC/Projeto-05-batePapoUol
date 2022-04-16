@@ -36,10 +36,6 @@ body{
 }
 
 /* chat */
-.tela-participantes{
-    display: flex;
-}
-
 .chat-display{
     display:flex;
     flex-direction: column;
@@ -94,7 +90,7 @@ input {
 
 /* tela entrada */
 
-.login{
+.login, .load{
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
@@ -128,13 +124,16 @@ input {
 
 .background-participantes {
     position: fixed;
-    width: auto;
+    width: 100%;
     height: 100%;
     left: 0;
     top: 0;
     background: rgba(0, 0, 0, 0.6);
-
+    display: flex;
+    justify-content: flex-end;
 }
+
+
 
 .coluna-participantes {
     min-width: 377px;
@@ -260,4 +259,26 @@ input {
 .log-out{
     color: white;
     background-color: red;
+}
+
+
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    margin-bottom: 20px;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+h3{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 15px;
 }

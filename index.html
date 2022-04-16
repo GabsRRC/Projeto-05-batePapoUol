@@ -18,7 +18,13 @@
         <div class="login">
             <img src="https://i.ibb.co/pXSHMQL/logo-2.png">
             <input class="nome-usuario" type="text" placeholder="Digite seu nome">
-            <button onclick="validarLogin(this)">Entrar</button>
+            <button class="botao" onclick="loading(this)">Entrar</button>
+        </div>
+        <div class="escondido">
+            <div class="load">
+                <div class="loader"></div>
+                <h3>Entrando...</h3>
+            </div>
         </div>
     </div>
 
@@ -75,9 +81,9 @@
                     </section>
                     <button class="voltar" onclick="alternarAbaParticipantes(this)">Voltar</button>
                     <button class="log-out" onclick="usuarioOff(this)">LogOut</button>
-                </div>          
-            </div>      
-        </div>
+                </div>
+            </div>              
+        </div>      
     </div>
 
 
